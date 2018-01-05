@@ -1,0 +1,36 @@
+{
+  "name": "vueauth",
+  "version": "1.0.0",
+  "description": "a system for authorization settings base on Vue and ElementUI",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"node app\" \"webpack -w\""
+  },
+  "keywords": [
+    "vue",
+    "authorization",
+    "authority",
+    "elementui"
+  ],
+  "author": "wgx",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.8",
+    "element-ui": "^2.0.10",
+    "express": "^4.16.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "node-uuid": "^1.4.8",
+    "redis": "^2.8.0",
+    "style-loader": "^0.19.1",
+    "vue": "^2.5.13",
+    "vue-cookie": "^1.1.4",
+    "vue-loader": "^13.6.2",
+    "vue-resource": "^1.3.5",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.13",
+    "vuex": "^3.0.1",
+    "webpack": "^3.10.0"
+  }
+}
