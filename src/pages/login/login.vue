@@ -11,20 +11,36 @@ export default {
         username: '',
         password: ''
       },
-      redirectUrl: ''
+      redirectUrl: '',
+      rules: {
+        username: [{
+          required: true,
+          message: '用户名必须输入'
+        }, {
+          max: 15,
+          min: 6,
+          message: '长度在6到15之间',
+          trigger: 'blur'
+        }],
+        password: [{
+          required: true,
+          message: '密码必须输入'
+        }, {
+          max: 15,
+          min: 6,
+          message: '长度在6到15之间',
+          trigger: 'blur'
+        }]
+      }
     }
   },
   methods: {
     login() {
+      this.$store.dispatch("show");
       this.$http.post('/api/api/user/login', this.loginUser).then(function(res) {
-        if(res.body.data) {
-          alert('登录成功');
-          console.log(res.data);
-          // data.json().then(function(d){
-          //   console.log(d);
-          //   cookie.setToken(d.body.data);
-            
-          // });
+        if(res.data.data) {
+          this.$store.dispatch("hide");
+          cookie.setToken(res.data.data);
           var url = this.redirectUrl || '/';
             this.$router.push({path: url});
         } else {

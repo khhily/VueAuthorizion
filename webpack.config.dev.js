@@ -4,7 +4,7 @@ var webpack = require("webpack");
 
 var webpackConfig = {
     entry: './src/index.js',
-    devtool: 'source-map',
+    devtool: '#source-map',
     output: {
         path: path.join(__dirname, './dist'),
         publicPath: '/',
@@ -31,6 +31,9 @@ var webpackConfig = {
             options: {
                 name: '[name].[ext]?[hash]'
             }
+        }, {
+            test: /\.(woff|woff2|svg|eot|ttf)$/,
+            loader: 'file-loader'
         }]
     },
     devServer: {

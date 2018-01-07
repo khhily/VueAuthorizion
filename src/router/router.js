@@ -12,7 +12,7 @@ var router = new VueRouter({
         redirect: '/home'
     }, {
         path: '/home',
-        
+        component: resolve => require(["../pages/base/base.vue"], resolve)
     }, {
         path: '/login',
         component: LoginComponent

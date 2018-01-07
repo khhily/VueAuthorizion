@@ -8,7 +8,7 @@ export default function(to, from, next){
             token: cookie.getToken()
         }
         Vue.http.post('/api/api/user/checklogin', null, {headers: headers}).then(data => {
-            if(data.body.data) {
+            if(data.data.data) {
                 next();
             } else {
                 next({path: '/login', query: { url: to.fullPath }});

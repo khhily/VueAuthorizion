@@ -13,16 +13,21 @@ var getUser = function(req, cb) {
     {
         var token = req.headers.token;
         if(token) {
-            var client = redis.createClient(6379, '127.0.0.1');
-            client.get(token, function(data) {
-                var user = null;
-                if(data) {
-                    user = JSON.parse(data);
-                }
-                if(cb) {
-                    cb(user);
-                }
-            });
+            // var client = redis.createClient(6379, '127.0.0.1');
+            // client.get(token, function(data) {
+            //     var user = null;
+            //     if(data) {
+            //         user = JSON.parse(data);
+            //     }
+            //     if(cb) {
+            //         cb(user);
+            //     }
+            // });
+            var user = {
+                username: 'wgx',
+                isSuperAdmin: true
+            };
+            cb(user);
             return;
         }
     }
@@ -32,14 +37,16 @@ var getUser = function(req, cb) {
 }
 
 var setUser = function(user) {
+    //带密码的验证
     //var redis_opt = {auth_pass:'wgx123456'};
     //var client = redis.createClient(6379, '127.0.0.1', redis_opt);
-    var client = redis.createClient(6379, '127.0.0.1');
+    //或者
+    //var client = redis.createClient(6379, '127.0.0.1');
     // client.auth("wgx123456", function(){
     //     console.log("auth passed");
     // });
     var token = 'token:' + uuid.v4();
-    var loginUser = client.set(token, JSON.stringify(user), (data) => {});
+    //var loginUser = client.set(token, JSON.stringify(user), (data) => {});
     return token;
 }
 
@@ -59,7 +66,7 @@ app.use('/api', function (req, res, next) {
         console.log(result);
         res.end(JSON.stringify(result));
     }
-    if (requestUrl.endsWith('/user/checklogin')) {
+    else if (requestUrl.endsWith('/user/checklogin')) {
         getUser(req, function(user) {
             var result = {};
             if(user) {
@@ -70,6 +77,11 @@ app.use('/api', function (req, res, next) {
             console.log(user);
             res.end(JSON.stringify(result));
         });
+    } else {
+        var result = {
+            data: []
+        };
+        res.end(JSON.stringify(result));
     }
 });
 

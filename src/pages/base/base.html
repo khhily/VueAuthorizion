@@ -1,0 +1,14 @@
+<el-container>
+    <el-aside>
+        <w-nav :menus="menus"></w-nav>
+    </el-aside>
+    <el-main>
+        <el-container>
+            <el-header></el-header>
+            <el-main>
+                <router-view></router-view>
+            </el-main>
+            <el-footer></el-footer>
+        </el-container>
+    </el-main>
+</el-container>

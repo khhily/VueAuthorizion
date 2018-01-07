@@ -1,0 +1,26 @@
+<template src="./base.html">
+</template>
+
+<script>
+import wNav from "./w-nav";
+export default {
+    name: 'BaseComponent',
+    data() {
+        return {
+            menus: []
+        };
+    },
+    created() {
+        var self = this;
+        self.$store.dispatch("show");
+        self.$http.post('/api/api/user/menus').then(function(data) {
+            self.menus = data.data.data;
+        }).finally(function() {
+            self.$store.dispatch("hide");
+        });
+    },
+    components: {
+        wNav
+    }
+}
+</script>
