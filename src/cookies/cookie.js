@@ -10,18 +10,18 @@ export default {
         return VueCookie.get(key);
     },
     setCookie(key, val) {
-        VueCookie.set(key, val, { path: '/', expired: 30 });
+        VueCookie.set(key, val, { path: '/', expires: 30 });
     },
     removeCookie(key) {
-        VueCookie.set(key, null, { path: '/', expired: -1});
+        VueCookie.set(key, null, { path: '/', expires: -1});
     },
     getToken() {
         return VueCookie.get(tokenKey);
     },
     setToken(val) {
-        VueCookie.set(tokenKey, val, {path: '/', expired: 1});
+        VueCookie.set(tokenKey, val, {path: '/', expires: 1});
     },
     removeToken() {
-        VueCookie.set(tokenKey, null, { path: '/', expired: -1});
+        VueCookie.set(tokenKey, null, { path: '/', expires: -1});
     }
 }

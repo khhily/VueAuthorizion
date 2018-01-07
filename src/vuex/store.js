@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-
+        messageHideDelay: 3000
     },
     modules: {
         globalLoadingModule

@@ -14,6 +14,7 @@ export default {
         var self = this;
         self.$store.dispatch("show");
         self.$http.post('/api/api/user/menus').then(function(data) {
+            console.log(data.data);
             self.menus = data.data.data;
         }).finally(function() {
             self.$store.dispatch("hide");

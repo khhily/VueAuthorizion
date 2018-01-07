@@ -15,6 +15,7 @@
   "author": "wgx",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "css-loader": "^0.28.8",
     "element-ui": "^2.0.10",

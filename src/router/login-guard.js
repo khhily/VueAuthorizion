@@ -3,7 +3,7 @@ import cookie from "../cookies/cookie";
 
 export default function(to, from, next){
     console.log(to.fullPath);
-    if(to.fullPath.startsWith('/home') || to.fullPath.startsWith('/home/')) {
+    if(to.fullPath.startsWith('/base') || to.fullPath.startsWith('/base/')) {
         var headers = {
             token: cookie.getToken()
         }
