@@ -1,12 +1,14 @@
 import Vue from "vue";
-import VueResource from "vue-resource";
 import ElementUI from "element-ui";
+import cookie from "../cookies/cookie";
 
 const loadingService = ElementUI.Loading;
 
 export default {
     install: function () {
         Vue.http.interceptors.push((req, next) => {
+            var token = cookie.getToken();
+            req.headers["token"] = token;
             var loadingInstance = loadingService.service({
                 fullscreen: true,
                 lock: true,
@@ -16,7 +18,7 @@ export default {
             });
             next(res => {
                 loadingInstance.close();
-            })
+            });
         });
     }
 }

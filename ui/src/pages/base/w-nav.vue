@@ -1,5 +1,5 @@
 <template>
-<el-menu :router="true">
+<el-menu :router="true" :unique-opened="true">
     <w-nav-item v-for="m in menus" :key="m.id" :menu="m"></w-nav-item>
 </el-menu>
 </template>

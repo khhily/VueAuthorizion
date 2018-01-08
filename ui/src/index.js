@@ -9,7 +9,8 @@ Vue.use(ElementUI);
 Vue.use(VueResource);
 Vue.use(postFilter);
 
-import 'element-ui/lib/theme-chalk/index.css'
+import 'element-ui/lib/theme-chalk/index.css';
+import '../assets/css/styles.css';
 
 new Vue({
     el: '#myApp',
