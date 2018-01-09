@@ -20,6 +20,7 @@ module.exports = function (req, res, next) {
         method: 'post',
         headers: headers
     };
+    console.log(option.headers.token);
     var api_req = http.request(option, function(api_res) {
         var buffers = [];
         api_res.on('data', function(chunk){
@@ -47,6 +48,7 @@ module.exports = function (req, res, next) {
             res.end(JSON.stringify(result));
         })
     });
+    
     if(req.body) {
         api_req.write(JSON.stringify(req.body));
     }

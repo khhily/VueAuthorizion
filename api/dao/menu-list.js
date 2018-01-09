@@ -27,7 +27,7 @@ module.exports.queryCount = function(where) {
             pageSize: 15
         };
     }
-    mongoHelper.select(table, pager).then(data => {
+    mongoHelper.count(table, where).then(data => {
         defer.resolve(data);
     }, err =>{
         defer.reject(err);

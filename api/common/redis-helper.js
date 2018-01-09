@@ -24,7 +24,7 @@ var getValue = function (key) {
     return defer.promise;
 };
 
-var setValue = function (key, val) {
+var setValue = function (key, val, expire) {
     var defer = q.defer();
     var client = getConnect();
     client.on('connect', function () {
@@ -43,6 +43,8 @@ var setValue = function (key, val) {
             }
             defer.resolve(reply);
         });
+        if(!expire) expire = 1800;//30分钟*60秒
+        client.expire(key, expire);
     });
     client.on('error', function (err) {
         defer.reject(err);

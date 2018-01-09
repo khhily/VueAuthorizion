@@ -8,7 +8,9 @@ export default {
     install: function () {
         Vue.http.interceptors.push((req, next) => {
             var token = cookie.getToken();
-            req.headers["token"] = token;
+            //这里必须用set
+            req.headers.set("token", token);
+            console.log(token);
             var loadingInstance = loadingService.service({
                 fullscreen: true,
                 lock: true,
@@ -18,6 +20,7 @@ export default {
             });
             next(res => {
                 loadingInstance.close();
+                return res;
             });
         });
     }

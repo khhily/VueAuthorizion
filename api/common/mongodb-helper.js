@@ -185,15 +185,13 @@ module.exports.count = function (table, where) {
             return;
         }
         var collection = dbase.collection(table);
-        where.total = {$sum: 1};
-        collection.aggregate(where, function(err, result) {
-            console.log(result);
+        collection.find(where).count(function(err, result) {
             if(err) {
                 defer.reject(err);
                 db.close();
                 return;
             }
-            defer.resolve(result.total);
+            defer.resolve(result);
             db.close();
         });
     });
