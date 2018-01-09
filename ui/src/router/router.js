@@ -13,7 +13,17 @@ var router = new VueRouter({
         redirect: '/base'
     }, {
         path: '/base',
-        component: BaseComponent
+        component: BaseComponent,
+        children: [{
+                name: 'menuList',
+                path: 'list',
+                component: resolve => require(['../pages/menu/list/menu-list.vue'], resolve)
+            }, {
+                name: 'menuDetail',
+                path: 'detail/:id',
+                component: resolve => require(['../pages/menu/detail/menu-detail.vue'], resolve)
+            }]
+        
     }, {
         path: '/login',
         component: LoginComponent

@@ -1,4 +1,4 @@
-<el-form :model="model" ref="menuDetailForm" :rules="rules">
+<el-form :model="model" ref="menuDetailForm" :rules="rules" @submit="save()">
     <el-form-item label="路由" prop="path">
         <el-input v-model="model.path"></el-input>
     </el-form-item>

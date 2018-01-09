@@ -16,16 +16,47 @@ export default {
             }
         };
     },
+    methods: {
+        edit(item) {
+            this.$router.push({name: 'menuDetail', params: item.id });
+        },
+        delete(item) {
+            this.$http.post('/api/api/menu/delete', {id: item.id}, function(data) {
+                if(!data.data.trans || !data.data.trans.errorCode) {
+                    this.search();
+                }
+            });
+        },
+        add() {
+            this.$router.push({path: '/base/menu/detail/0'});
+        },
+        search() {
+            this.getList();
+            this.getCount();
+        },
+        getList() {
+            var self = this;
+            this.$http.post('/api/api/menu/list', {pager: self.pager}).then(function(data) {
+                self.list = data.data.data;
+            });
+        },
+        getCount() {
+            var self = this;
+            this.$http.post('/api/api/menu/count').then(function(data){
+                self.pager.total = data.data.data;
+            });
+        },
+        pageChanged(page) {
+            this.pager.currentPage = page;
+            this.getList();
+        }
+    },
     created() {
-        let self = this;
-        self.$http.post('/api/api/menu/list', {
-            pager: this.pager
-        }).then(data => {
-            self.list = data.data.data;
-        });
-
-        self.$http.post('/api/api/menu/count').then(data => {
-            self.pager.total = data.data.data;
-        })
+        this.search();
+    },
+    watch: {
+        '$route'(to, from) {
+            this.search();
+        }
     }
 }

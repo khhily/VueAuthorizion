@@ -10,7 +10,7 @@ module.exports.queryList = function(where, pager) {
             pageSize: 15
         };
     }
-    mongoHelper.select(table, pager).then(data => {
+    mongoHelper.select(table, where, pager).then(data => {
         defer.resolve(data);
     }, err =>{
         defer.reject(err);
@@ -21,12 +21,6 @@ module.exports.queryList = function(where, pager) {
 
 module.exports.queryCount = function(where) {
     var defer = q.defer();
-    if(!pager) {
-        pager = {
-            currentPage: 1,
-            pageSize: 15
-        };
-    }
     mongoHelper.count(table, where).then(data => {
         defer.resolve(data);
     }, err =>{

@@ -1,8 +1,8 @@
 var menuListDao = require('../../dao/menu-list');
 
 module.exports = function(req, res, next) {
-    var pager = req.pager;
-    menuListDao.queryCount(null).then(data => {
+    var where = req.body.where;
+    menuListDao.queryCount(where).then(data => {
         var result = {
             data: data || 1
         };
