@@ -26,11 +26,13 @@ module.exports = function (req, res, next) {
         api_res.on('data', function(chunk){
             buffers.push(chunk);
         });
-
         api_res.on('end', function() {
             var buffer = bufferHelper.mergeBuffers(buffers);
             var responseStr = buffer.toString();
-            var res_data = JSON.parse(responseStr);
+            var res_data;
+            if(responseStr) {
+                res_data = JSON.parse(responseStr);
+            }
             var result = {};
             if(res_data) {
                 result.data = res_data.data;
@@ -48,7 +50,15 @@ module.exports = function (req, res, next) {
             res.end(JSON.stringify(result));
         })
     });
-    
+    api_req.on('error', function(err) {
+        var result = {
+            trans: {
+                errorCode: err.status,
+                errorMessage: err.message
+            }
+        };
+        res.end(JSON.stringify(result));
+    });
     if(req.body) {
         api_req.write(JSON.stringify(req.body));
     }

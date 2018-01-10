@@ -18,17 +18,17 @@ export default {
     },
     methods: {
         edit(item) {
-            this.$router.push({name: 'menuDetail', params: item.id });
+            this.$router.push({name: 'menuDetail', params: item._id });
         },
         delete(item) {
-            this.$http.post('/api/api/menu/delete', {id: item.id}, function(data) {
+            this.$http.post('/api/api/menu/delete', {id: item._id}, function(data) {
                 if(!data.data.trans || !data.data.trans.errorCode) {
                     this.search();
                 }
             });
         },
         add() {
-            this.$router.push({path: '/base/menu/detail/0'});
+            this.$router.push({path: '/base/menu-detail/0'});
         },
         search() {
             this.getList();

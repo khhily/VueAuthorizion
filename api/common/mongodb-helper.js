@@ -161,7 +161,7 @@ module.exports.select = function (table, where, pager) {
             });
         } else {
             searchDataWithPager(dbase, table, where, pager).then(data => {
-                if (data) {
+                if (!data) {
                     data = [];
                 }
                 defer.resolve(data);

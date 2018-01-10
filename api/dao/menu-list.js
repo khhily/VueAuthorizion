@@ -28,4 +28,16 @@ module.exports.queryCount = function(where) {
     });
 
     return defer.promise;
+};
+
+module.exports.insert = function(model) {
+    var defer = q.defer();
+
+    mongoHelper.insert(table, model).then(data => {
+        defer.resolve(data);
+    }, err => {
+        defer.reject(err);
+    });
+
+    return defer.promise;
 }

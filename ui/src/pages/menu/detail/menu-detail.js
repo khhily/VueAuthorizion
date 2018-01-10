@@ -1,7 +1,10 @@
 export default {
     data() {
         return {
-            model: {},
+            model: {
+                path: '',
+                display: ''
+            },
             rules: {
                 display: [{
                     required: true,
@@ -27,9 +30,11 @@ export default {
                     this.loading = true;
                     this.$http.post('/api/api/menu/save', {
                         data: this.model
-                    }, function (data) {
+                    }).finally(function(){
+                        this.loading = false;
+                    }).then(function (data) {
                         if (!data.data.trans || !data.data.trans.errorCode) {
-                            this.$route.push({
+                            this.$router.push({
                                 name: 'menuList'
                             });
                         }

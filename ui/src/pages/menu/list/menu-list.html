@@ -1,11 +1,11 @@
 <el-form>
-    <el-button size="small" @click="add()">新增</el-button>
-    <el-table border :data="list" style="width: 100%;">
+    <el-button size="mini" @click="add()">新增</el-button>
+    <el-table border stripe :data="list" size="mini" empty-text="空数据" height="300">
         <el-table-column v-for="field in fields" :key="field.field" :prop="field.field" :label="field.display"></el-table-column>
         <el-table-column label="操作">
             <template slot-scope="item">
-                <el-button type="text" size="small" @click="edit(item.row)">编辑</el-button>
-                <el-button type="text" size="small" @click="delete(item.row)">删除</el-button>
+                <el-button type="text" size="mini" @click="edit(item.row)">编辑</el-button>
+                <el-button type="text" size="mini" @click="delete(item.row)">删除</el-button>
             </template>
         </el-table-column>
     </el-table>
