@@ -20,7 +20,7 @@ var router = new VueRouter({
             component: resolve => require(['../pages/menu/list/menu-list.vue'], resolve)
         }, {
             name: 'menuDetail',
-            path: 'menu-detail/:id',
+            path: 'menu-detail/:id?/:pid?',
             component: resolve => require(['../pages/menu/detail/menu-detail.vue'], resolve)
         }]
     }, {

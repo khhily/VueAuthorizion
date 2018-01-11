@@ -13,12 +13,13 @@ export default {
                 currentPage: 1,
                 pageSize: 15,
                 total: 1
-            }
+            },
+            loading: false
         };
     },
     methods: {
         edit(item) {
-            this.$router.push({name: 'menuDetail', params: item._id });
+            this.$router.push({name: 'menuDetail', params: { id: item._id} });
         },
         delete(item) {
             this.$http.post('/api/api/menu/delete', {id: item._id}, function(data) {
@@ -28,7 +29,7 @@ export default {
             });
         },
         add() {
-            this.$router.push({path: '/base/menu-detail/0'});
+            this.$router.push({path: '/base/menu-detail'});
         },
         search() {
             this.getList();
@@ -36,7 +37,10 @@ export default {
         },
         getList() {
             var self = this;
-            this.$http.post('/api/api/menu/list', {pager: self.pager}).then(function(data) {
+            self.loading = true;
+            this.$http.post('/api/api/menu/list', {pager: self.pager}).finally(function(){
+                self.loading = false;
+            }).then(function(data) {
                 self.list = data.data.data;
             });
         },

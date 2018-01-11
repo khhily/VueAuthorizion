@@ -20,7 +20,6 @@ module.exports = function (req, res, next) {
         method: 'post',
         headers: headers
     };
-    console.log(option.headers.token);
     var api_req = http.request(option, function(api_res) {
         var buffers = [];
         api_res.on('data', function(chunk){
@@ -30,7 +29,7 @@ module.exports = function (req, res, next) {
             var buffer = bufferHelper.mergeBuffers(buffers);
             var responseStr = buffer.toString();
             var res_data;
-            if(responseStr) {
+            if(api_res.statusCode == 200 && responseStr) {
                 res_data = JSON.parse(responseStr);
             }
             var result = {};

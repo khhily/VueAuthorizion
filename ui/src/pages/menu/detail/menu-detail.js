@@ -16,10 +16,10 @@ export default {
     },
     methods: {
         getDetail(id) {
-            if (id && id > 0) {
+            if (id) {
                 this.$http.post('/api/api/menu/detail', {
                     id
-                }, function (data) {
+                }).then(function (data) {
                     this.model = data.data.data;
                 });
             }

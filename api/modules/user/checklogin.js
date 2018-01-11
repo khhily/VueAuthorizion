@@ -9,6 +9,9 @@ module.exports = function(req, res, next) {
             if(!data) {
                 result.data = false;
             }
+            if(result.data) {
+                redisHelper.refresh(token);
+            }
             res.end(JSON.stringify(result));
         });
     } else {

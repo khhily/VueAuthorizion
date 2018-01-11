@@ -50,7 +50,21 @@ var setValue = function (key, val, expire) {
         defer.reject(err);
     });
     return defer.promise;
+};
+
+var refreshTime = function(key, expire) {
+    var defer = q.defer();
+    var client = getConnect();
+    client.on('connect', function () {
+        if(!expire) expire = 1800;//30分钟*60秒
+        client.expire(key, expire);
+    });
+    client.on('error', function (err) {
+        defer.reject(err);
+    });
+    return defer.promise;
 }
 
 module.exports.get = getValue;
 module.exports.set = setValue;
+module.exports.refresh = refreshTime;
