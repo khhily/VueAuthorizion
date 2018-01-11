@@ -64,6 +64,7 @@ export default {
             }
           });
       });
+      return false;
     },
     getQuery() {
       this.redirectUrl = this.$route.query.url;
@@ -77,3 +78,11 @@ export default {
   }
 };
 </script>
+
+<style>
+  .login-title {
+    font-size:18px;
+    font-weight:700;
+    color: rgb(212, 102, 0)
+  }
+</style>

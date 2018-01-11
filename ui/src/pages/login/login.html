@@ -1,16 +1,21 @@
-<el-row :gutter="10" type="flex" justify="center" align="middle">
-  <el-col :xs="24" :sm="18" :md="12" :lg="8" :xl="6">
+<el-row>
+  <el-row type="flex" justify="center" align="bottom" style="width:100%; height:150px; margin-bottom: 30px;">
+      <span class="login-title">登录</span>
+  </el-row>
+  <el-row :gutter="10" type="flex" justify="center" align="top" style="width: 100%;">
+    <el-col :xs="24" :sm="18" :md="12" :lg="8" :xl="6">
       <el-form ref="loginForm" :model="loginUser" :rules="rules" label-width="80px">
-          <el-form-item label="用户名" prop="username">
-            <el-input v-model="loginUser.username"></el-input>
-          </el-form-item>
-          <el-form-item label="密码" prop="password">
-            <el-input type="password" v-model="loginUser.password"></el-input>
-          </el-form-item>
-          <el-form-item size="large">
-              <el-button type="primary" @click="login()">登录</el-button>
-          </el-form-item>
-          <el-alert v-if="error.show" :title="error.message" type="error" :closable="false" center show-icon></el-alert>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="loginUser.username"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input type="password" v-model="loginUser.password"></el-input>
+        </el-form-item>
+        <el-form-item size="large">
+          <el-button type="primary" style="width:100%;" @click="login()">登录</el-button>
+        </el-form-item>
+        <el-alert v-if="error.show" :title="error.message" type="error" :closable="false" center show-icon></el-alert>
       </el-form>
-  </el-col>
+    </el-col>
+  </el-row>
 </el-row>

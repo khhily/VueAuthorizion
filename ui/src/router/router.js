@@ -10,11 +10,17 @@ var router = new VueRouter({
     mode: 'history',
     routes: [{
         path: '/',
-        redirect: '/base'
+        redirect: '/base/home'
     }, {
         path: '/base',
         component: BaseComponent,
         children: [{
+            path:'',
+            redirect: 'home'
+        },{
+            path: 'home',
+            component: resolve => require(['../pages/base/home.vue'], resolve)
+        },{
             path: 'menu-list',
             name: 'menuList',
             component: resolve => require(['../pages/menu/list/menu-list.vue'], resolve)
