@@ -15,19 +15,23 @@ var router = new VueRouter({
         path: '/base',
         component: BaseComponent,
         children: [{
-            path:'',
+            path: '',
             redirect: 'home'
-        },{
+        }, {
             path: 'home',
             component: resolve => require(['../pages/base/home.vue'], resolve)
-        },{
-            path: 'menu-list',
-            name: 'menuList',
-            component: resolve => require(['../pages/menu/list/menu-list.vue'], resolve)
         }, {
-            name: 'menuDetail',
-            path: 'menu-detail/:id?/:pid?',
-            component: resolve => require(['../pages/menu/detail/menu-detail.vue'], resolve)
+            path: 'menu',
+            component: resolve => require(['../pages/menu/tree/menu-tree.vue'], resolve),
+            children: [{
+                path: 'list/:pid?',
+                name: 'menu-list',
+                component: resolve => require(['../pages/menu/list/menu-list.vue'], resolve)
+            }, {
+                path: 'detail/:pid?/:id?',
+                name: 'menu-detail',
+                component: resolve => require(['../pages/menu/detail/menu-detail.vue'], resolve)
+            }]
         }]
     }, {
         path: '/login',

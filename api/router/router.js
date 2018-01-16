@@ -8,5 +8,7 @@ router.post('/menu/list', require("../modules/menu/list"));
 router.post('/menu/count', require("../modules/menu/count"));
 router.post('/menu/save', require("../modules/menu/save"));
 router.post('/menu/detail', require("../modules/menu/detail"));
+router.post('/menu/tree', require("../modules/menu/tree"));
+router.post('/menu/delete', require("../modules/menu/delete"));
 
 module.exports = router;

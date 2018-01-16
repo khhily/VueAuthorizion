@@ -1,22 +1,17 @@
 var menuListDao = require('../../dao/menu-list');
 
 module.exports = function (req, res, next) {
-    var model = req.body.data;
-    if (model) {
-        var saveModel = {
-            path: model.path,
-            display: model.display,
-            pId: model.pId || '',
-            id: model._id
+    var id = req.body.id;
+    if (id) {
+        var where = {
+            _id: id
         };
-        if (!saveModel.id) {
-            menuListDao.insert(saveModel).then(data => {
+        if (where) {
+            menuListDao.remove(where).then(data => {
                 res.end();
             });
         } else {
-            menuListDao.update(saveModel).then(data => {
-                res.end();
-            });
+            res.end();
         }
     } else {
         var result = {

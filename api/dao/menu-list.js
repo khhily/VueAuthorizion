@@ -62,3 +62,16 @@ module.exports.update = function(saveModel) {
     });
     return defer.promise;
 }
+
+module.exports.remove = function(where) {
+    var defer = q.defer();
+    if(where["_id"]) {
+        where._id = ObjectId(where._id);
+    }
+    mongoHelper.delete(table, where).then(data => {
+        defer.resolve(data);
+    }, err => {
+        defer.reject(err);
+    });
+    return defer.promise;
+}

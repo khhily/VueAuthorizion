@@ -9,3 +9,12 @@
 .w-container .w-main {
     height: 100%;
 }
+
+.el-table thead th .cell {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.el-table tbody td .cell {
+    font-size: 14px;
+}

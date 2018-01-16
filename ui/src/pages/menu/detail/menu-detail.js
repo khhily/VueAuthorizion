@@ -3,7 +3,8 @@ export default {
         return {
             model: {
                 path: '',
-                display: ''
+                display: '',
+                pId: ''
             },
             rules: {
                 display: [{
@@ -35,8 +36,12 @@ export default {
                     }).then(function (data) {
                         if (!data.data.trans || !data.data.trans.errorCode) {
                             this.$router.push({
-                                name: 'menuList'
+                                name: 'menu-list',
+                                params: {
+                                    pid: this.model.pid
+                                }
                             });
+                            this.$store.dispatch('menuTree/refreshMenus');
                         }
                     });
                 }
@@ -45,10 +50,12 @@ export default {
     },
     watch: {
         '$route' (to, from) {
+            this.model.pId = to.params.pid || '';
             this.getDetail(to.params.id);
         }
     },
     created() {
+        this.model.pId = this.$route.params.pid || '';
         this.getDetail(this.$route.params.id);
     }
 }
