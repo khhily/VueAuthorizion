@@ -3,6 +3,7 @@
 
 <script>
 import wNav from "./w-nav";
+import homeHeader from "./header";
 export default {
     name: 'BaseComponent',
     data() {
@@ -21,7 +22,8 @@ export default {
         });
     },
     components: {
-        wNav
+        wNav,
+        homeHeader
     }
 }
 </script>

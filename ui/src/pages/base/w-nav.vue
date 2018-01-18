@@ -1,5 +1,5 @@
 <template>
-<el-menu :router="true" :unique-opened="true">
+<el-menu :router="true" :unique-opened="true" text-color="#CCCCCC" background-color="#003366" active-text-color="#FFFFFF">
     <w-nav-item v-for="m in menus" :key="m._id" :menu="m"></w-nav-item>
 </el-menu>
 </template>

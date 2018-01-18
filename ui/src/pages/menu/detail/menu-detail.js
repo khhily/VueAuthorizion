@@ -38,7 +38,7 @@ export default {
                             this.$router.push({
                                 name: 'menu-list',
                                 params: {
-                                    pid: this.model.pid
+                                    pid: this.model.pId
                                 }
                             });
                             this.$store.dispatch('menuTree/refreshMenus');
