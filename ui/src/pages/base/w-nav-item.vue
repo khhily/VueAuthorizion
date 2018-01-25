@@ -5,7 +5,7 @@
     </template>
     <w-nav-item v-for="m in menu.children" :key="m._id" :menu="m"></w-nav-item>
 </el-submenu>
-<el-menu-item v-else :route="{path: menu.path || '/'}" :index="menu._id">
+<el-menu-item v-else :class="{'is-active': (menu.path||'/') == $store.state.currentRoute}" :route="{path: menu.path || '/'}" :index="menu._id">
     <span slot="title">{{menu.display}}</span>
 </el-menu-item>
 </template>

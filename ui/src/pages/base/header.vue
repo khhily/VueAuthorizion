@@ -16,11 +16,11 @@ export default {
       }
   },
   created() {
-      this.$http.post('/api/api/user/getme').then(data => {
-          if(data.data) {
-              this.loginUser = data.data.data;
-          }
-      });
+    //   this.$http.post('/api/api/user/getme').then(data => {
+    //       if(data.data) {
+    //           this.loginUser = data.data.data;
+    //       }
+    //   });
   }
 }
 </script>

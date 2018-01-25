@@ -1,6 +1,6 @@
 <el-row type="flex" :gutter="10">
     <el-col :xs="24" :sm="12" :md="6" :lg="4" :xl="3">
-        <el-tree :data="$store.state.menuTree.menus" :default-expanded-keys="$store.state.menuTree.defaultExpandKeys" @node-collapse="collapseMenu($event)" @node-expand="expandMenu($event)" node-key="_id" :props="option" :accordion="true" :default-expand-all="true" :expand-on-click-node="false" :highlight-current="true" @node-click="select($event)"></el-tree>
+        <el-tree :data="$store.state.menuTree.menus" :default-expanded-keys="$store.state.menuTree.defaultExpandKeys" node-key="_id" :props="option" :accordion="true" :default-expand-all="true" :expand-on-click-node="false" :highlight-current="true" @node-click="select($event)"></el-tree>
     </el-col>
     <el-col style="flex-grow:1">
         <router-view></router-view>

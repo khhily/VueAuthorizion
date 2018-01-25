@@ -3,7 +3,7 @@
     <el-col :span="4">
         <el-dropdown trigger="click" size="mini" @command="clickMenu">
             <span class="el-dropdown-link">
-                {{loginUser.username}}
+                {{$store.state.loginUser.username}}
                 <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">

@@ -11,14 +11,9 @@ export default {
     },
     methods: {
         select(data, node) {
-            if(data.children && data.children.length > 0)
-                this.$router.push({path: '/base/menu/list/' + data._id});
-        },
-        expandMenu(data, node, tree) {
-            this.$store.dispatch('menuTree/setCurrentKey', data._id);
-        },
-        collapseMenu(data, node, tree) {
-            this.$store.dispatch('menuTree/setCurrentKey',null);
+            //if(data.children && data.children.length > 0)
+            this.$store.dispatch('menuTree/setCurrentKey', data);
+            this.$router.push({path: '/base/menu/list/' + data._id});
         }
     },
     created() {

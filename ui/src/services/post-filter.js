@@ -8,7 +8,7 @@ export default {
     install: function () {
         Vue.http.interceptors.push((req, next) => {
             var token = cookie.getToken();
-            //这里必须用set
+            //这里必须用set，不然无法修改header的值
             req.headers.set("token", token);
             var loadingInstance = loadingService.service({
                 fullscreen: true,

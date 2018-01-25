@@ -2,7 +2,7 @@
     <el-row type="flex" :gutter="10">
         <el-form-item label="父级节点：">
             <el-col v-if="!condition.pid">根节点</el-col>
-            <el-col v-else>{{condition.pid}}</el-col>
+            <el-col v-else>{{$store.state.menuTree.currentDisplay}}</el-col>
         </el-form-item>
     </el-row>
     <el-row>

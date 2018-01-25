@@ -5,14 +5,16 @@ module.exports = function(req, res, next) {
     if(req.headers && req.headers["token"]) {
         var token = req.headers["token"];
         redisHelper.get(token).then(data => {
-            var result = { data: true };
+            var result = { data: data };
             if(!data) {
-                result.data = false;
+                result.data = null;
             }
             if(result.data) {
+                result.data = JSON.parse(result.data);
                 redisHelper.refresh(token);
             }
-            res.end(JSON.stringify(result));
+            res.json(result);
+            //res.end(JSON.stringify(result));
         });
     } else {
         res.end(JSON.stringify({data: false}));

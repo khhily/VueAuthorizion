@@ -4,19 +4,21 @@ export default {
     state: {
         menus: [],
         currentKey: '',
+        currentDisplay: '',
         defaultExpandKeys: []
     },
     mutations: {
         refresh(state, menus) {
             state.menus = menus;
-            if(state.currentKey) {
-                var keys = [];
-                keys.push(state.currentKey);
-                state.defaultExpandKeys = keys;
-            }
+            // if(state.currentKey) {
+            //     var keys = [];
+            //     keys.push(state.currentKey);
+            //     state.defaultExpandKeys = keys;
+            // }
         },
         setKey(state, key) {
-            state.currentKey = key;
+            state.currentKey = key._id;
+            state.currentDisplay = key.display;
         }
     },
     actions: {

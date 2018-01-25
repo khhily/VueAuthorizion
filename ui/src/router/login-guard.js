@@ -1,5 +1,6 @@
 import Vue from "vue";
 import cookie from "../cookies/cookie";
+import store from "./../vuex/store";
 
 export default function(to, from, next){
     console.log(to.fullPath);
@@ -7,8 +8,10 @@ export default function(to, from, next){
         var headers = {
             token: cookie.getToken()
         }
+        store.dispatch('setCurrentRoute', to.fullPath);
         Vue.http.post('/api/api/user/checklogin', null, {headers: headers}).then(data => {
             if(data.data.data) {
+                store.dispatch('updateLoginUser', data.data.data);
                 next();
             } else {
                 next({path: '/login', query: { url: to.fullPath }});
