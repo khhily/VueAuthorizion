@@ -19,14 +19,14 @@ var router = new VueRouter({
             redirect: 'home'
         }, {
             path: 'home',
-            component: resolve => require(['../pages/base/home.vue'], resolve),
+            component: () => import (/* webpackChunkName:'home'*/ '../pages/base/home.vue'),
         }, {
             path: 'menu',
-            component: resolve => require(['../pages/menu/tree/menu-tree.vue'], resolve),
+            component: () => import (/* webpackChunkName:'menu'*/ '../pages/menu/tree/menu-tree.vue'),
             children: [{
                 path: 'detail/:id?/:pid?',
                 name: 'menu-detail',
-                component: resolve => require(['../pages/menu/detail/menu-detail.vue'], resolve),
+                component: () => import (/* webpackChunkName:'menu'*/ '../pages/menu/detail/menu-detail.vue'),
             }]
         }]
     }, {
