@@ -22,6 +22,8 @@
     "express": "^4.16.2",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "style-loader": "^0.19.1",
     "vue": "^2.5.13",
     "vue-cookie": "^1.1.4",

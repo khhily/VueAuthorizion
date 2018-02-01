@@ -1,0 +1,4 @@
+<el-breadcrumb separator="/">
+    <el-breadcrumb-item v-for="item in $store.state.breadcrumb.histories" :key="item.title" :to="item.to">{{item.title}}</el-breadcrumb-item>
+    <el-breadcrumb-item>{{$store.state.breadcrumb.current.title}}</el-breadcrumb-item>
+</el-breadcrumb>

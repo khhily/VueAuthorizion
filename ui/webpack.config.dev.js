@@ -23,8 +23,8 @@ var webpackConfig = {
             test: /\.vue$/,
             loader: 'vue-loader'
         }, {
-            test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            test: /\.less|css$/,
+            use:[ 'style-loader','css-loader','less-loader']
         }, {
             test: /\.png|jpg|gif|ico$/,
             loader: 'file-loader',

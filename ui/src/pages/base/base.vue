@@ -4,6 +4,7 @@
 <script>
 import wNav from "./w-nav";
 import homeHeader from "./header";
+import homeFooter from "./footer";
 export default {
     name: 'BaseComponent',
     data() {
@@ -23,7 +24,8 @@ export default {
     },
     components: {
         wNav,
-        homeHeader
+        homeHeader,
+        homeFooter
     }
 }
 </script>

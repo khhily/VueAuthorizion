@@ -33,6 +33,7 @@ module.exports = function (req, res, next) {
                 display: '根节点',
                 children: treeNodes,
                 _id: '',
+                disabled: true,
             }]
         };
 

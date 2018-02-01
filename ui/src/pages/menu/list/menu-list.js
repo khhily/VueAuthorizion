@@ -22,11 +22,19 @@ export default {
         };
     },
     methods: {
-        edit: function(item) {
-            var params = {pid: this.condition.pid};
-            if (item) {
-                params.id = item._id;
-            }
+        initialBreadcrumb() {
+            this.$store.dispatch('breadcrumb/setBreadcrumbs',{
+                histories: [{
+                    to: { path: '/' },
+                    title: '首页'
+                }],
+                current: {
+                    title: '菜单列表'
+                }
+            })
+        },
+        edit: function() {
+            var params = {pid: this.condition.pid, id: 0};
             this.$router.push({
                 name: 'menu-detail',
                 params: params
@@ -70,12 +78,14 @@ export default {
         }
     },
     created() {
-        this.condition.pid = this.$route.params.pid;
+        this.condition.pid = this.$route.params.id;
+        this.initialBreadcrumb();
         this.search();
     },
     watch: {
         '$route' (to, from) {
-            this.condition.pid = to.params.pid;
+            this.condition.pid = to.params.id;
+            this.initialBreadcrumb();
             this.search();
         }
     }

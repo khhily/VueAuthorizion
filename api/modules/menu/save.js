@@ -11,11 +11,11 @@ module.exports = function (req, res, next) {
         };
         if (!saveModel.id) {
             menuListDao.insert(saveModel).then(data => {
-                res.end();
+                res.json(data);
             });
         } else {
             menuListDao.update(saveModel).then(data => {
-                res.end();
+                res.json(data);
             });
         }
     } else {

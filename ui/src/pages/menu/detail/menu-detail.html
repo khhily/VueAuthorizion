@@ -1,4 +1,13 @@
 <el-form :model="model" ref="menuDetailForm" :rules="rules">
+    <el-row type="flex" justify="space-between">
+        <el-col>详细信息</el-col>
+        <el-col style="text-align: right;">
+            <el-button type="primary" size="mini" @click="createSubMenu()">新增子菜单</el-button>
+            <el-button v-if="!model.pId" type="primary" size="mini" @click="createSublingMenu()">新增同级菜单</el-button>
+            <el-button type="primary" size="mini" @click="save()" :loading="loading">保存</el-button>
+            <el-button type="primary" size="mini" @click="deleteItem(model)">删除节点</el-button>
+        </el-col>
+    </el-row>
     <el-row type="flex" :gutter="20">
         <el-col :span="6">
             <el-form-item label="路由" prop="path">
@@ -11,13 +20,4 @@
             </el-form-item>
         </el-col>
     </el-row>
-
-    <el-row type="flex" justify="center">
-        <el-col :span="6">
-            <el-form-item>
-                <el-button type="primary" @click="save()" :loading="loading">保存</el-button>
-            </el-form-item>
-        </el-col>
-    </el-row>
-
 </el-form>

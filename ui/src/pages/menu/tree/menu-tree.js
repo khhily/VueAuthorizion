@@ -3,17 +3,30 @@ export default {
         return {
             option: {
                 label: 'display',
+                isLeaf: function (data, node) {
+                    return !data.children || data.children.length <= 0;
+                },
+                disabled: function (data, node) {
+                    return data.disabled;
+                }
             },
-            isLeaf: function(data, node) {
-                return !data.children || data.children.length <= 0;
-            }
         }
     },
     methods: {
         select(data, node) {
-            //if(data.children && data.children.length > 0)
-            this.$store.dispatch('menuTree/setCurrentKey', data);
-            this.$router.push({path: '/base/menu/list/' + data._id});
+            if (data._id) {
+                //if(data.children && data.children.length > 0)
+                this.$store.dispatch('menuTree/setCurrentKey', data);
+                this.$router.push({
+                    name: 'menu-detail',
+                    params: {
+                        id: data._id,
+                    }
+                });
+            }
+        },
+        disabled(data, node) {
+            return data.disabled;
         }
     },
     created() {

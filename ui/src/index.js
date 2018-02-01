@@ -10,7 +10,7 @@ Vue.use(VueResource);
 Vue.use(postFilter);
 
 import 'element-ui/lib/theme-chalk/index.css';
-import '../assets/css/styles.css';
+import '../assets/css/styles.less';
 
 new Vue({
     el: '#myApp',

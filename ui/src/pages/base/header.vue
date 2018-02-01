@@ -3,8 +3,9 @@
 </template>
 
 <script>
+import cookie from "./../../cookies/cookie";
+import breadcrumb from "./breadcrumb/breadcrumb";
 export default {
-  name: 'homeHeader',
   data() {
       return {
           loginUser: {}
@@ -13,15 +14,25 @@ export default {
   methods: {
       clickMenu(cmd) {
           
+      },
+      exit() {
+          cookie.removeToken();
+          this.$router.push({path: '/base'});
+      },
+      changepwd() {
+
       }
   },
   created() {
-    //   this.$http.post('/api/api/user/getme').then(data => {
-    //       if(data.data) {
-    //           this.loginUser = data.data.data;
-    //       }
-    //   });
+  },
+  components: {
+      breadcrumb
   }
 }
 </script>
+
+<style lang="less" src="./header.less">
+
+</style>
+
 

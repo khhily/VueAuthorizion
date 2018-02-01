@@ -1,6 +1,22 @@
-<el-row type="flex" justify="end" :gutter="10">
-    <el-col :span="6" style="justify-content:flex-end;">欢迎使用通用权限管理系统</el-col>
-    <el-col :span="4">
+<el-row type="flex" justify="space-between" align="middle" :gutter="10" class="header-info">
+    <el-col class="header-breadcrumb">
+        <breadcrumb></breadcrumb>
+    </el-col>
+    <el-col class="user">
+        <div class="welcome">欢迎
+            <router-link :to="{path: '/base/myinfo'}">{{$store.state.loginUser.username}}</router-link>,</div>
+
+        <ul class="funcs">
+            <li>
+                <a href="javascript:void(0);" @click="changepwd()">修改密码</a>
+            </li>
+            <li>
+                <a class="logout-link" href="javascript:void(0);" @click="exit()">退出</a>
+            </li>
+        </ul>
+    </el-col>
+
+    <!-- <el-col :span="4">
         <el-dropdown trigger="click" size="mini" @command="clickMenu">
             <span class="el-dropdown-link">
                 {{$store.state.loginUser.username}}
@@ -12,5 +28,5 @@
                 <el-dropdown-item :divided="true" command="exit">退出</el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
-    </el-col>
+    </el-col> -->
 </el-row>
