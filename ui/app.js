@@ -4,6 +4,13 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var apiHandler = require("./server/api-handler");
+var url = require('url');
+var httpProxy = require('http-proxy');
+var webProxy = httpProxy.createProxyServer({
+    prependPath: true,
+    ignorePath: true,
+    changeOrigin: true
+});
 
 var staticPath = './dist';
 app.set('PORT', 10300);
@@ -11,7 +18,12 @@ app.set('PORT', 10300);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/api', apiHandler);
+//app.use('/api', apiHandler);
+app.use('/api', function (req, res) {
+    var targetPath = "http://localhost:10500" + url.parse(req.url).path;
+    console.log(targetPath);
+    webProxy.web(req, res, {target: targetPath});
+})
 
 app.use('/node_modules', express.static(path.join(__dirname, "./node_modules/")));
 app.use('/assets', express.static(path.join(__dirname, "./assets/")));

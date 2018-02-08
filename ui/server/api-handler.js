@@ -2,6 +2,7 @@ var bufferHelper = require("./buffer-helper");
 var http = require("http");
 
 module.exports = function (req, res, next) {
+    
     var reqPath = req.url;
     //reqPath = reqPath.substring(4);
     var uiHeaders = req.headers;
@@ -37,7 +38,7 @@ module.exports = function (req, res, next) {
                 result.data = res_data.data;
             }
             console.log("request url : " + reqPath);
-            res.end(JSON.stringify(result));
+            res.json(result);
         });
         api_res.on('error', function(err) {
             var result = {
@@ -46,7 +47,7 @@ module.exports = function (req, res, next) {
                     errorMessage: err.message
                 }
             };
-            res.end(JSON.stringify(result));
+            res.json(result);
         })
     });
     api_req.on('error', function(err) {
@@ -56,7 +57,7 @@ module.exports = function (req, res, next) {
                 errorMessage: err.message
             }
         };
-        res.end(JSON.stringify(result));
+        res.json(result);
     });
     if(req.body) {
         api_req.write(JSON.stringify(req.body));

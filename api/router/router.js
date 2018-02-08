@@ -10,5 +10,7 @@ router.post('/menu/save', require("../modules/menu/save"));
 router.post('/menu/detail', require("../modules/menu/detail"));
 router.post('/menu/tree', require("../modules/menu/tree"));
 router.post('/menu/delete', require("../modules/menu/delete"));
+router.post('/user/list', require("../modules/user/list"));
+router.post('/user/count', require("../modules/user/count"));
 
 module.exports = router;

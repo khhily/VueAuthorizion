@@ -37,7 +37,7 @@ module.exports = function (req, res, next) {
             }]
         };
 
-        res.write(JSON.stringify(result));
-        res.end();
+        res.json(result);
+        
     });
 };

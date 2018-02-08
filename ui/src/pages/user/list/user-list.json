@@ -1,0 +1,13 @@
+[{
+    "field": "userName",
+    "display": "用户名"
+}, {
+    "field": "telephone",
+    "display": "联系电话"
+}, {
+    "field": "email",
+    "display": "邮箱"
+}, {
+    "field": "gender",
+    "display": "性别"
+}]

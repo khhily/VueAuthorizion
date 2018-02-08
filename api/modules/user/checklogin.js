@@ -1,7 +1,6 @@
 var redisHelper = require("../../common/redis-helper");
 
 module.exports = function(req, res, next) {
-    console.log("check login");
     if(req.headers && req.headers["token"]) {
         var token = req.headers["token"];
         redisHelper.get(token).then(data => {
@@ -14,9 +13,8 @@ module.exports = function(req, res, next) {
                 redisHelper.refresh(token);
             }
             res.json(result);
-            //res.end(JSON.stringify(result));
         });
     } else {
-        res.end(JSON.stringify({data: false}));
+        res.json({data: false});
     }
 };

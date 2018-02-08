@@ -1,0 +1,21 @@
+<el-form style="position:relative; width: 100%;" :inline="true">
+    <el-row type="flex" justify="space-between">
+        <el-col>子节点列表:</el-col>
+        <el-col style="text-align: right;">
+            <el-button icon="el-icon-plus" size="small" @click="edit()">新增</el-button>
+        </el-col>
+    </el-row>
+    <div style="position: absolute; width: 100%;">
+        <el-table border stripe :loading="loading" :data="list" style="width: 100%;" size="mini" empty-text="空数据" :highlight-current-row="true">
+            <el-table-column v-for="field in fields" v-if="!field.filter" :key="field.field" :prop="field.field" :label="field.display"></el-table-column>
+            <el-table-column v-for="field in fields" v-else :key="field.field" :prop="field.field | field.filter" :label="field.display"></el-table-column>
+            <el-table-column label="操作">
+                <div slot-scope="item">
+                    <el-button type="text" size="mini" name="delete" @click="deleteItem(item.row)">删除</el-button>
+                </div>
+            </el-table-column>
+        </el-table>
+    </div>
+    <el-pagination layout="prev, pager, next" @current-change="pageChanged($event)" :total="pager.total">
+    </el-pagination>
+</el-form>
