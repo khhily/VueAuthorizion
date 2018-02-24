@@ -10,13 +10,20 @@ export default {
                     return data.disabled;
                 }
             },
+            fields: [{
+                field: 'path',
+                display: '路由'
+            }, {
+                field: 'display',
+                display: '显示文字'
+            }],
+            datas: []
         }
     },
     methods: {
         select(data, node) {
             if (data._id) {
                 //if(data.children && data.children.length > 0)
-                this.$store.dispatch('menuTree/setCurrentKey', data);
                 this.$router.push({
                     name: 'menu-detail',
                     params: {
@@ -25,11 +32,11 @@ export default {
                 });
             }
         },
-        disabled(data, node) {
-            return data.disabled;
+        getMenus() {
+            this.$http.post('')
         }
     },
     created() {
-        this.$store.dispatch('menuTree/refreshMenus');
+
     }
 }

@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import globalLoadingModule from "./modules/global-loading";
-import menuTree from "./modules/menu/menu-tree";
 import breadcrumb from "./modules/breadcrumb/breadcrumb";
 
 Vue.use(Vuex);
@@ -30,7 +29,6 @@ export default new Vuex.Store({
     },
     modules: {
         globalLoadingModule,
-        menuTree,
         breadcrumb
     }
 });

@@ -1,0 +1,12 @@
+<el-table :data="items">
+    <el-table-column type="expand">
+        <div slot-scope="item">
+            <tree-table :data="item.row.children" :fields="fields" :parentKey="parentKey" :idKey="idKey"></tree-table>
+        </div>
+    </el-table-column>
+    <el-table-column v-for="field in fields" :key="field.field" :prop="field.field" :label="field.display"></el-table-column>
+    <el-table-column label="操作">
+        <div slot="operation" slot-scope="item" :item="item.row">
+        </div>
+    </el-table-column>
+</el-table>

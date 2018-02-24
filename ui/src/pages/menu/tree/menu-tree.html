@@ -1,4 +1,4 @@
-<el-row type="flex" :gutter="10">
+<!-- <el-row type="flex" :gutter="10">
     <el-col :xs="24" :sm="12" :md="6" :lg="4" :xl="3">
         <el-tree :data="$store.state.menuTree.menus" node-key="_id" :props="option" :accordion="true" :default-expand-all="true" 
             :expand-on-click-node="false" :highlight-current="true" @node-click="select($event)"></el-tree>
@@ -6,4 +6,5 @@
     <el-col style="flex-grow:1">
         <router-view></router-view>
     </el-col>
-</el-row>
+</el-row> -->
+<tree-table :data="datas" :fields="fields" :parentKey="parentId" :idKey="_id"></tree-table>
